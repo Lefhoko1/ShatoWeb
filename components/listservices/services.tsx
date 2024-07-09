@@ -12,7 +12,7 @@ const statusColorMap = {
 };
 
 export default function Services() {
-  const renderCell = React.useCallback((user, columnKey) => {
+  const renderCell = React.useCallback((user:any, columnKey:any) => {
     const cellValue = user[columnKey];
 
     switch (columnKey) {
@@ -35,7 +35,7 @@ export default function Services() {
         );
       case "status":
         return (
-          <Chip className="capitalize" color={statusColorMap[user.status]} size="sm" variant="flat">
+          <Chip className="capitalize"  size="sm" variant="flat">
             {cellValue}
           </Chip>
         );
