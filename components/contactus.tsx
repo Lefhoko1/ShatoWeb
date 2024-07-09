@@ -48,7 +48,7 @@ export default function ContactUs() {
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
-
+                title="Map Location"
                 loading="lazy"
               ></iframe>
             </CardBody>

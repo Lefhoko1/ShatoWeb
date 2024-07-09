@@ -15,11 +15,11 @@ const Footer = () => {
             <div className="flex flex-col items-start p-4">
               <p className="font-medium text-lg mb-4">Services</p>
               <nav className="flex flex-col space-y-2 text-sm text-gray-500">
-                <a href="#" className="hover:opacity-75">1on1 Coaching</a>
-                <a href="#" className="hover:opacity-75">Company Review</a>
-                <a href="#" className="hover:opacity-75">Accounts Review</a>
-                <a href="#" className="hover:opacity-75">HR Consulting</a>
-                <a href="#" className="hover:opacity-75">SEO Optimisation</a>
+                <a   className="hover:opacity-75">1on1 Coaching</a>
+                <a  className="hover:opacity-75">Company Review</a>
+                <a   className="hover:opacity-75">Accounts Review</a>
+                <a  className="hover:opacity-75">HR Consulting</a>
+                <a   className="hover:opacity-75">SEO Optimisation</a>
               </nav>
             </div>
           </Card>

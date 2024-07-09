@@ -11,7 +11,7 @@ const statusColorMap = {
   vacation: "warning",
 };
 
-export default function services() {
+export default function Services() {
   const renderCell = React.useCallback((user, columnKey) => {
     const cellValue = user[columnKey];
 
