@@ -1,6 +1,4 @@
-import { title } from "@/components/primitives"; 
-import UploadForm from "@/components/uploadForm"
-import ImageList from "@/components/ImageList"
+import { title } from "@/components/primitives";  
 export default function DocsPage() {
   return (
     <div>
@@ -14,7 +12,7 @@ export default function DocsPage() {
       }}
     >
       <h1>Upload Files</h1>
-      <UploadForm/>
+      
      
     </div>
     </div> 
