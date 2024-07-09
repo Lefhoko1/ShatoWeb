@@ -1,7 +1,7 @@
 import React from "react";
 import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
 
-export default function workera() {
+export default function Workera() {
   const [isFollowed, setIsFollowed] = React.useState(false);
 
   return (
