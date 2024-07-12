@@ -1,40 +1,44 @@
 import React from "react";
-import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
+import { Card, CardBody, Image, Divider } from "@nextui-org/react"; 
+import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
-import   Workera  from "@/components/workera";
-export default function OurTeam() {
-    return (
-        <div className="w-full min-h-screen gap-2 grid grid-cols-12 grid-rows-2 px-8">
-            <Card isFooterBlurred className="shadow-none border-none w-full col-span-12 sm:col-span-12">
-                <CardBody>
-                    <div className="inline-block max-w-lg text-center justify-center">
-                        <h1 className={title()}>Our&nbsp;</h1>
-                        <h1 className={title({ color: "violet" })}>Team&nbsp;</h1>
-                        <br />
-                        <h2 className={title()}>are tailored to our client’s specific needs!</h2>
-                        <h3 className={subtitle({ class: "mt-4" })}>Personalized approach to service delivery.</h3>
-                        
-                    </div>
-                </CardBody>
-            </Card>
-            <Card isFooterBlurred className="shadow-none border-none w-full h-[350px] col-span-12 sm:col-span-4">
-                <CardBody>
-                   <Workera/>
-                </CardBody>
-            </Card>
 
-            <Card isFooterBlurred className="shadow-none border-none w-full h-[350px] col-span-12 sm:col-span-4">
-                <CardBody>
-                <Workera/>
-                </CardBody>
-            </Card>
+const OurTeam = () => {
+  return (
+    <section className="py-5">
+      <div className="gap-2 grid grid-cols-12 px-8 w-full">
+        <Card isFooterBlurred className="w-full h-auto col-span-12 shadow-none sm:col-span-8 flex items-center justify-center">
+          <CardBody className=" mt-5 mt-md-0">
+          
+            <p className="text-lg">
+              {siteConfig.people[1]} 
+              <br/>
+                </p>
+                <br/>
+            <p className="text-lg">
+               {siteConfig.people[2]}  </p>
+               <br/>
+               <p className="text-lg">
+               {siteConfig.people[3]}  </p>
+               <br/>
+            <p className="text-lg">
+              Whether you are facing a complex legal challenge or need straightforward advice, we are here to help you navigate the legal landscape with confidence and clarity.
+            </p>
+          </CardBody>
+        </Card>
+        <Card isFooterBlurred className="w-full h-auto shadow-none col-span-12 sm:col-span-4">
+          <CardBody>
+            <Image
+              removeWrapper
+              alt="About Us Image"
+              className="z-0 w-full h-full object-cover rounded-3"
+              src="/images/3.png"
+            />
+          </CardBody>
+        </Card>
+      </div>
+    </section>
+  );
+};
 
-            <Card isFooterBlurred className="shadow-none border-none w-full h-[350px] col-span-12 sm:col-span-4">
-                <CardBody>
-                <Workera/>
-                </CardBody>
-            </Card>
-
-        </div>
-    );
-}
+export default OurTeam;

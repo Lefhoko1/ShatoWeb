@@ -5,20 +5,8 @@ import { title, subtitle } from "@/components/primitives";
 
 export default function FAQ() {
   return (
-    <div className="w-full min-h-screen gap-2 grid grid-cols-12 grid-rows-2 px-8"
-    style={{ backgroundImage: "url('/images/bluegradient.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-    >
-      <Card isFooterBlurred className="shadow-none border-none w-full h-[350px] col-span-12 flex justify-center items-center mb-4">
-        <CardBody className="flex justify-center items-center text-center">
-          <div className="inline-block max-w-lg">
-            <h1 className={title()}>Our&nbsp;</h1>
-            <h1 className={title({ color: "violet" })}>legal solutions&nbsp;</h1>
-            <br />
-            <h2 className={title()}>are tailored to our client’s specific needs!</h2>
-            <h3 className={subtitle({ class: "mt-4" })}>Personalized approach to service delivery.</h3>
-          </div>
-        </CardBody>
-      </Card>
+   
+      
       <Accordion variant="splitted" className="col-span-12">
         <AccordionItem key="1" aria-label="Accordion 1" title="What areas of law do you specialize in?">
           We specialize in family law, criminal defense, personal injury, and corporate law.
@@ -36,6 +24,6 @@ export default function FAQ() {
           Yes, we offer a range of legal services for businesses, including contract review, corporate governance, and dispute resolution.
         </AccordionItem>
       </Accordion>
-    </div>
+    
   );
 }

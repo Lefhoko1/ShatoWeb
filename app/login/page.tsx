@@ -3,8 +3,6 @@ import { title } from "@/components/primitives";
 import Form from "@/components/Form";
 import UploadForm from "@/components/UploadForm"; 
 import AllFilesPage from "@/components/allfiles"
-import { siteConfig } from "@/config/site";
-
 export default function DocsPage() {
   return (
     <div>
@@ -17,9 +15,9 @@ export default function DocsPage() {
         minHeight: '100vh',
       }}
     >
-      <h1>Upload Files here</h1> 
+      <h1>Upload Files</h1>
       <Form/>
-       
+      <UploadForm/>
 
      
     </div>

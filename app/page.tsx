@@ -1,9 +1,4 @@
 "use client";
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import ServiceSection from "@/components/OurServicesSection";
 import AskedQuestions from "@/components/frequestltaskedquestions";
@@ -12,13 +7,15 @@ import ContactUs from "@/components/contactus";
 import AboutSection from "@/components/aboutus";
 import BlogAtAlanding from "@/components/blogatlandingpage";
 import FooterWithSocialLinks from "@/components/footer";
-import AboutUsChild from "@/components/aboutus/aboutuschild";
+import ServiceItems from "@/components/servicesItems";
+import OurSer5vicesTile from "@/components/ourservicesTitle";
+import OurTeamTitle from "@/components/ourteamTitle";
+import FaqTitle from "@/components/faqTitle";
+
 
 import { Divider } from "@nextui-org/react";
-import { GithubIcon } from "@/components/icons";
 import React from "react";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
-import { Card, Image, CardHeader, CardBody, CardFooter, Button, Accordion, AccordionItem } from "@nextui-org/react";
+import { Card, Image, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
 
 export default function Home() {
   const [isFollowed, setIsFollowed] = React.useState(false);
@@ -26,10 +23,10 @@ export default function Home() {
   return (
     <section
       className="flex flex-col items-center justify-center gap-4 py-8 md:py-10"
+      
       >
       {/* Header Section */}
-      <div className="max-w-[1200px] gap-4 grid grid-cols-12 grid-rows-2 px-8"
-       style={{ backgroundImage: "url('/images/background.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+      <div className="max-w-[1200px] gap-4 grid grid-cols-12 grid-rows-2 px-8" 
        >
         <Card isFooterBlurred className="w-full h-[350px] shadow-none border-none col-span-12 sm:col-span-7">
           <CardBody>
@@ -53,14 +50,14 @@ export default function Home() {
         </Card>
         <Card isFooterBlurred className="w-full h-[350px] col-span-12 sm:col-span-5">
           <CardHeader className="absolute z-10 top-1 flex-col items-start">
-            <p className="text-tiny text-white/60 uppercase font-bold">Your day your way</p>
-            <h4 className="text-white/90 font-medium text-xl">Your checklist for better sleep</h4>
+            <p className="text-tiny text-white/60 uppercase font-bold">Your justice your way</p>
+            <h4 className="text-white/90 font-medium text-xl">Have a lawyer for better sleep</h4>
           </CardHeader>
           <Image
             removeWrapper
             alt="Relaxing app background"
             className="z-0 w-full h-full object-cover"
-            src="https://nextui.org/images/card-example-5.jpeg"
+            src="/images/1.jpg"
           />
         </Card>
 
@@ -68,7 +65,7 @@ export default function Home() {
         <div className="col-span-12 md:col-span-4 flex flex-col justify-center p-8">
           <h1 className="text-3xl font-bold text-center">Whats at us?</h1>
         </div>
-        <Card className="col-span-12 md:col-span-8">
+        <Card className="col-span-12 md:col-span-8" >
           <CardBody>
             <div className="max-w-lg mx-auto text-center">
               <h1 className={title()}>Our&nbsp;</h1>
@@ -84,11 +81,18 @@ export default function Home() {
       <Divider orientation="horizontal" />
       <AboutSection />
       <Divider orientation="horizontal" />
+       
+      <OurSer5vicesTile/>
+      <ServiceItems/>
       <ServiceSection />
+      
       <Divider orientation="horizontal" />
-      <AskedQuestions />
-      <Divider orientation="horizontal" />
+       <OurTeamTitle/>
       <OurTeam />
+      
+      <Divider orientation="horizontal" />
+      <FaqTitle/>
+      <AskedQuestions />
       <ContactUs />
       <FooterWithSocialLinks />
     </section>
