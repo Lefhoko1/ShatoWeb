@@ -1,6 +1,5 @@
 'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function UploadForm() {
   const [file, setFile] = useState(null);
@@ -59,7 +58,7 @@ export default function UploadForm() {
       {uploadResult && (
         <div className="mt-4">
           <h3 className="text-lg font-bold">Upload Result:</h3>
-          <p>URL: <a href={uploadResult.url} target="_blank" className="text-blue-500 underline">{uploadResult.url}</a></p>
+          <p>URL: <a href={uploadResult.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">{uploadResult.url}</a></p>
           <p>Type: {uploadResult.type}</p>
           <p>Name: {uploadResult.name}</p>
         </div>

@@ -10,7 +10,7 @@ export default async function AllFilesPage(){
                 {
                     blobs.blobs.map((blob) =>(
                        <li key={blob.pathname}>
-                        <a href={blob.url} target="_blank">
+                        <a href={blob.url} target="_blank"  rel="noopener noreferrer">
                             
                         <Image src={blob.url} alt ={blob.pathname} width={200} height = {200} />
                         {blob.pathname} {blob.size} 

@@ -60,9 +60,12 @@ export default function UploadForm() {
     <div className="max-w-md mx-auto my-10 p-6 bg-white shadow-md rounded-md">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Select a file</label>
+          <label htmlFor="file-upload" className="block text-sm font-medium text-gray-700">
+            Select a file
+          </label>
           <input
             type="file"
+            id="file-upload"
             onChange={(e) => setFile(e.target.files?.item(0) || null)}
             className="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-indigo-500 focus:ring-indigo-500"
           />
