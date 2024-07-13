@@ -98,8 +98,15 @@ blogIntro : "Welcome to our blog dedicated to exploring the latest in legal deve
     contactus: {
       email1: "info@nlebgwalaw.co.bw",
       email2: "shatho@nlebgwalaw.co.bw",
-      MOBILE: "(+267) 74 628 785",
+      MOBILE: "(+267) 72-293-292",
       adress: "P O Box 10008 Palapye"
+    }
+    , location:{
+      1: "Plot 54358",
+      2: "WESTERN COMMERCIAL ROAD GROUND",
+      3: "AND FIRST FLOOR",
+      4: "THE HUB, iTOWER, CBD",
+      5: "GABORONE, BOTSWANA"
     }
  ,
 

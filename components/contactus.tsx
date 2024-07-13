@@ -15,6 +15,16 @@ export default function ContactUs() {
               <div className="inline-block max-w-lg">
                 <h1 className={title()}>We are within&nbsp;</h1>
                 <h1 className={title({ color: "violet" })}>your reach&nbsp;</h1>
+                <br/><br/>
+                <p className="text-gray-600">{siteConfig.location[1]}</p>
+                 
+                  <p className="text-gray-600">{siteConfig.location[2]}</p>
+                 
+                  <p className="text-gray-600"> {siteConfig.location[3]}</p>
+                
+                  <p className="text-gray-600">{siteConfig.location[4]}</p>
+                  <p className="text-gray-600">{siteConfig.location[5]}</p>
+
                 <br />
                 <br />
                   <p className="text-gray-600">{siteConfig.contactus.adress}</p>
