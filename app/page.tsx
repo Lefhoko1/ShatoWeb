@@ -12,7 +12,6 @@ import OurSer5vicesTile from "@/components/ourservicesTitle";
 import OurTeamTitle from "@/components/ourteamTitle";
 import FaqTitle from "@/components/faqTitle";
 
-
 import { Divider } from "@nextui-org/react";
 import React from "react";
 import { Card, Image, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
@@ -21,13 +20,9 @@ export default function Home() {
   const [isFollowed, setIsFollowed] = React.useState(false);
 
   return (
-    <section
-      className="flex flex-col items-center justify-center gap-4 py-8 md:py-10"
-      
-      >
+    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
       {/* Header Section */}
-      <div className="max-w-[1200px] gap-4 grid grid-cols-12 grid-rows-2 px-8" 
-       >
+      <div className="w-full gap-4 grid grid-cols-12 grid-rows-2 px-4 md:px-8">
         <Card isFooterBlurred className="w-full h-[350px] shadow-none border-none col-span-12 sm:col-span-7">
           <CardBody>
             <div className="inline-block max-w-lg text-center justify-center">
@@ -65,11 +60,11 @@ export default function Home() {
         <div className="col-span-12 md:col-span-4 flex flex-col justify-center p-8">
           <h1 className="text-3xl font-bold text-center">Whats at us?</h1>
         </div>
-        <Card className="col-span-12 md:col-span-8" >
+        <Card className="col-span-12 md:col-span-8">
           <CardBody>
             <div className="max-w-lg mx-auto text-center">
               <h1 className={title()}>Our&nbsp;</h1>
-              <h1 className={title({ color: "violet" })}>blog&nbsp;</h1>
+              <h1 className={title({ color: "green" })}>blog&nbsp;</h1>
               <br />
               <h3 className={subtitle({ class: "mt-4" })}>Check out our blog to see articles.</h3>
               <BlogAtAlanding />
@@ -82,16 +77,16 @@ export default function Home() {
       <AboutSection />
       <Divider orientation="horizontal" />
        
-      <OurSer5vicesTile/>
-      <ServiceItems/>
+      <OurSer5vicesTile />
+      <ServiceItems />
       <ServiceSection />
       
       <Divider orientation="horizontal" />
-       <OurTeamTitle/>
+      <OurTeamTitle />
       <OurTeam />
       
       <Divider orientation="horizontal" />
-      <FaqTitle/>
+      <FaqTitle />
       <AskedQuestions />
       <ContactUs />
       <FooterWithSocialLinks />

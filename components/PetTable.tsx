@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
-import { Card, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
+import { Card, CardFooter, Image } from "@nextui-org/react";
 
 interface Pet {
   id: number;
@@ -16,10 +16,11 @@ export default function PetTable() {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const timestamp = new Date().getTime();
-        const response = await fetch(`/api/get-all-pets?timestamp=${timestamp}`, {next :{revalidate : 5} } );
+        const response = await fetch(`/api/get-all-pets`, {
+          method: 'POST',
+        });
         const data = await response.json();
-        setPets(data.pets.rows);
+        setPets(data.pets);
       } catch (error) {
         console.error("Failed to fetch pets", error);
       } finally {
@@ -43,13 +44,13 @@ export default function PetTable() {
               removeWrapper
               alt={`${pet.name} image`}
               className="w-full h-[300px] object-cover"
-              src={pet.name} // Assuming pet.image is the URL to the pet's image
+              src={pet.name} // Use pet.image for the image URL
             />
             <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
               <div>
                 <p className="text-black text-tiny">Pet ID: {pet.id}</p>
               </div>
-              <a className="text-tiny" color="primary"   href={pet.owner}>
+              <a className="text-tiny" color="primary" href={pet.owner}>
                 Download
               </a>
             </CardFooter>

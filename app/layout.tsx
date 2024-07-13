@@ -43,10 +43,9 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="relative flex flex-col h-screen"
-          > 
+          <div className="relative flex flex-col min-h-screen w-full">
             <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow" >
+            <main className="w-full px-4 md:px-6 flex-grow">
               {children}
             </main>
             <footer className="w-full flex items-center justify-center py-3">
@@ -61,7 +60,6 @@ export default function RootLayout({
               </Link>
               <span className="text-default-600 ml-2">@copy MLEGBSWA</span>
             </footer>
-
           </div>
         </Providers>
       </body>

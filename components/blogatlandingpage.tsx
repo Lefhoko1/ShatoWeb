@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
+import { Card, CardFooter, Image } from "@nextui-org/react";
 
 interface Pet {
   id: number;
@@ -15,9 +15,12 @@ export default function App() {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await fetch('/api/get-all-pets', { cache: 'no-store' });
+        const response = await fetch('/api/get-all-pets', {
+          method: 'POST',
+          cache: 'no-store'
+        });
         const data = await response.json();
-        setPets(data.pets.rows);
+        setPets(data.pets);
       } catch (error) {
         console.error("Failed to fetch pets", error);
       } finally {
@@ -43,9 +46,10 @@ export default function App() {
             src={pet.name} // Assuming pet.image is the URL to the pet's image
           />
           <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-             
-            <a className="text-tiny" color="primary"   href={pet.owner}>
-              View More
+            <a 
+              className="text-tiny text-blue-500 hover:text-blue-700 underline hover:no-underline transition duration-200 ease-in-out"
+              href={pet.owner}>
+              Download
             </a>
           </CardFooter>
         </Card>
