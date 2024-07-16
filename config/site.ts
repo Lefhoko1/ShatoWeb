@@ -49,7 +49,7 @@ export const siteConfig = {
     discord: "https://discord.gg/9b6yyZKmH4",
     sponsor: "https://patreon.com/jrgarciadev",
   },
-  text1: "Nlebgwa Law Group is a boutique law firm strategically located in Palapye to guarantee clients ease of access to the three judicial centers being Gaborone/Lobatse, Francistown and Maun branches of the High Court and Industrial Court. This also includes access to all other subordinate courts across the country."
+  text1: "Nlebgwa Law Group is a boutique law firm strategically located at Plot 54358 WESTERN COMMERCIAL ROAD GROUND AND FIRST FLOOR THE HUB, iTOWER, CBD GABORONE, BOTSWANA to guarantee clients ease of access to the three judicial centers being Gaborone/Lobatse, Francistown and Maun branches of the High Court and Industrial Court. This also includes access to all other subordinate courts across the country."
   ,
   
     text2: "Our overarching ambition is to provide comprehensive legal solutions to our clients in response to their present and future needs. Our legal solutions are tailored to our client’s specific needs while guaranteeing a personalized approach to service delivery. "

@@ -7,8 +7,10 @@ export default function BlogPage() {
     <div className="min-h-screen flex flex-col justify-center items-center py-8 md:py-10">
       <h1 className={title()}>Blog</h1>
       <p>{siteConfig.blogIntro}</p>
-      <div className="w-full max-w-screen-xl px-4 py-6">
-        <PetTable />
+      <div className="w-full px-4 py-6">
+        <div className="w-full">
+          <PetTable />
+        </div>
       </div>
     </div>
   );

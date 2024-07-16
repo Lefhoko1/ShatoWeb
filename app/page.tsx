@@ -11,85 +11,114 @@ import ServiceItems from "@/components/servicesItems";
 import OurSer5vicesTile from "@/components/ourservicesTitle";
 import OurTeamTitle from "@/components/ourteamTitle";
 import FaqTitle from "@/components/faqTitle";
+import BlogSection from "@/components/blogsection";
+import LogosSection from "@/components/logosSection";
+import LogosSection1 from "@/components/LogosSection1";
 
 import { Divider } from "@nextui-org/react";
 import React from "react";
-import { Card, Image, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
+import { motion } from "framer-motion";
+import { FaArrowDown } from "react-icons/fa";
 
-export default function Home() {
-  const [isFollowed, setIsFollowed] = React.useState(false);
+const Home: React.FC = () => {
+  const scrollToNextSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
-      {/* Header Section */}
-      <div className="w-full gap-4 grid grid-cols-12 grid-rows-2 px-4 md:px-8">
-        <Card isFooterBlurred className="w-full h-[350px] shadow-none border-none col-span-12 sm:col-span-7">
-          <CardBody>
-            <div className="inline-block max-w-lg text-center justify-center">
-              <h1 className={title()}>Our&nbsp;</h1>
-              <h1 className={title({ color: "violet" })}>legal solutions&nbsp;</h1>
-              <br />
-              <h2 className={title()}>are tailored to our client’s specific needs!</h2>
-              <h3 className={subtitle({ class: "mt-4" })}>Personalized approach to service delivery.</h3>
-            </div>
-          </CardBody>
-          <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-            <div>
-              <p className="text-black text-tiny">Want to</p>
-              <p className="text-black text-tiny">know more?</p>
-            </div>
-            <Button className="text-tiny" color="primary" radius="full" size="sm">
-              Contact Us
-            </Button>
-          </CardFooter>
-        </Card>
-        <Card isFooterBlurred className="w-full h-[350px] col-span-12 sm:col-span-5">
-          <CardHeader className="absolute z-10 top-1 flex-col items-start">
-            <p className="text-tiny text-white/60 uppercase font-bold">Your justice your way</p>
-            <h4 className="text-white/90 font-medium text-xl">Have a lawyer for better sleep</h4>
-          </CardHeader>
-          <Image
-            removeWrapper
-            alt="Relaxing app background"
-            className="z-0 w-full h-full object-cover"
-            src="/images/1.jpg"
-          />
-        </Card>
+    <section className="flex flex-col items-center justify-center gap-4 w-full">
+      <motion.div
+        id="logo-section1"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen w-full flex flex-col items-center justify-center"
+      >
+        <LogosSection1 scrollToNextSection={scrollToNextSection} />
+      </motion.div>
 
-        {/* Our Blog Section */}
-        <div className="col-span-12 md:col-span-4 flex flex-col justify-center p-8">
-          <h1 className="text-3xl font-bold text-center">Whats at us?</h1>
+      <Divider orientation="horizontal" className="bg-purple-300" />
+
+      <motion.div
+        id="about-section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-green-500"
+      >
+        <AboutSection />
+      </motion.div>
+ 
+  {/* Still Image Section */}
+  <div className="w-full h-[300px] flex items-center justify-center">
+        <img src="/images/2.jpg" alt="Still" className="w-full h-full object-cover" />
+      </div>
+      <motion.div
+        id="services-section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <OurSer5vicesTile />
+        <ServiceItems />
+        <ServiceSection />
+      </motion.div>
+
+    
+
+      {/* Knowledge Bank Section */}
+      <div 
+        id="knowledge-bank"
+        className="w-full h-[300px] flex flex-col items-center justify-center relative"
+        style={{
+          backgroundImage: "url('/images/2.jpg')", // Update with your image path
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <h1 className="text-3xl font-bold text-white">Knowledge Bank</h1>
         </div>
-        <Card className="col-span-12 md:col-span-8">
-          <CardBody>
-            <div className="max-w-lg mx-auto text-center">
-              <h1 className={title()}>Our&nbsp;</h1>
-              <h1 className={title({ color: "green" })}>blog&nbsp;</h1>
-              <br />
-              <h3 className={subtitle({ class: "mt-4" })}>Check out our blog to see articles.</h3>
-              <BlogAtAlanding />
-            </div>
-          </CardBody>
-        </Card>
       </div>
 
-      <Divider orientation="horizontal" />
-      <AboutSection />
-      <Divider orientation="horizontal" />
-       
-      <OurSer5vicesTile />
-      <ServiceItems />
-      <ServiceSection />
+      <BlogSection />
+
+      <Divider orientation="horizontal" className="bg-purple-300" />
+
+      <motion.div
+        id="team-section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-green-500"
+      >
+        <OurTeamTitle />
+        <OurTeam />
+      </motion.div>
+
       
-      <Divider orientation="horizontal" />
-      <OurTeamTitle />
-      <OurTeam />
-      
-      <Divider orientation="horizontal" />
-      <FaqTitle />
-      <AskedQuestions />
+      <Divider orientation="horizontal" className="bg-purple-300" />
+
+      <motion.div
+        id="faq-section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-green-500"
+      >
+        <FaqTitle />
+        <AskedQuestions />
+      </motion.div>
+
+      <Divider orientation="horizontal" className="bg-purple-300" />
       <ContactUs />
       <FooterWithSocialLinks />
     </section>
   );
-}
+};
+
+export default Home;

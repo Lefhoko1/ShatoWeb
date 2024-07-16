@@ -20,10 +20,10 @@ export default function Services() {
         return (
           <User
             avatarProps={{radius: "lg", src: user.avatar}}
-            description={user.email}
+            
             name={cellValue}
           >
-            {user.email}
+            
           </User>
         );
       case "role":

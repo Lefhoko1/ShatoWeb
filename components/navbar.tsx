@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import { useState } from "react";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -15,6 +16,7 @@ import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 
 import { Card, CardBody, Image, Divider } from "@nextui-org/react";
 
@@ -30,25 +32,35 @@ import {
 } from "@/components/icons";
 
 export const Navbar = () => {
+  const [username, setUsername] = useState<string>("");
+  const router = useRouter();
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (username === "ShatoAdmin123") {
+      router.push("/docs");
+    } else {
+      alert("Invalid username");
+    }
+  };
+
   const searchInput = (
-    <Input
-      aria-label="Login"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
+    <form onSubmit={handleLogin} className="flex items-center">
+      <Input
+        aria-label="Login"
+        classNames={{
+          inputWrapper: "bg-default-100",
+          input: "text-sm",
+        }}
+        labelPlacement="outside"
+        placeholder="Enter username"        
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <Button type="submit" className="ml-2">
+        Login
+      </Button>
+    </form>
   );
 
   return (
@@ -59,7 +71,7 @@ export const Navbar = () => {
             <Image
               removeWrapper
               alt="About Us Image"
-              className="z-0  h-[50px]  object-cover rounded-3"
+              className="z-0 h-[50px] object-cover rounded-3"
               src="/images/logo.png"
             />
           </NextLink>
@@ -70,7 +82,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -90,13 +102,9 @@ export const Navbar = () => {
           <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
           </Link>
-
-          
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-
       </NavbarContent>
-
 
       <NavbarMenu>
         {searchInput}
@@ -108,8 +116,8 @@ export const Navbar = () => {
                   index === 2
                     ? "primary"
                     : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
+                    ? "danger"
+                    : "foreground"
                 }
                 href="#"
                 size="lg"

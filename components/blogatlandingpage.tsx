@@ -3,9 +3,9 @@ import { Card, CardFooter, Image } from "@nextui-org/react";
 
 interface Pet {
   id: number;
-  name: string;
-  owner: string;
-  image: string; // Assuming each pet has an image URL
+  url: string;
+  dowloadurl: string;
+  extension: string; // Assuming each pet has an image URL
 }
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
           cache: 'no-store'
         });
         const data = await response.json();
-        setPets(data.pets);
+        setPets(data.images);
       } catch (error) {
         console.error("Failed to fetch pets", error);
       } finally {
@@ -41,14 +41,14 @@ export default function App() {
         <Card key={pet.id} isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-4">
           <Image
             removeWrapper
-            alt={`${pet.name} image`}
+            alt={`${pet.url} image`}
             className="z-0 w-full h-full object-cover"
-            src={pet.name} // Assuming pet.image is the URL to the pet's image
+            src={pet.url} // Assuming pet.image is the URL to the pet's image
           />
           <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
             <a 
               className="text-tiny text-blue-500 hover:text-blue-700 underline hover:no-underline transition duration-200 ease-in-out"
-              href={pet.owner}>
+              href={pet.dowloadurl}>
               Download
             </a>
           </CardFooter>

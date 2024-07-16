@@ -44,6 +44,8 @@
 		"pg-hstore": "^2.3.4",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
+		"react-icons": "^5.2.1",
+		"react-intersection-observer": "^9.13.0",
 		"resend": "^3.4.0",
 		"sequelize": "^6.37.3"
 	},

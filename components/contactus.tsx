@@ -32,8 +32,7 @@ export default function ContactUs() {
                   <p className="text-gray-600">{siteConfig.contactus.MOBILE}</p>
                  
                   <p className="text-gray-600"> {siteConfig.contactus.email1}</p>
-                
-                  <p className="text-gray-600">{siteConfig.contactus.email2}</p>
+                 
                 
                
             </div>

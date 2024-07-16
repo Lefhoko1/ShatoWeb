@@ -37,18 +37,19 @@ export default function UploadForm() {
 
       const petName = data.url;
       const ownerName = data.downloadUrl;
+      const contenttype = data.contentType;
 
       // Pass the preview URL to the backend API as query parameters
-      const addPetResponse = await fetch(`/api/add-pet?petName=${encodeURIComponent(petName)}&ownerName=${encodeURIComponent(ownerName)}`, {
+      const addPetResponse = await fetch(`/api/add-pet?petName=${encodeURIComponent(petName)}&ownerName=${encodeURIComponent(ownerName)}}&contentType=${encodeURIComponent(contenttype)}`, {
         method: "GET",
       });
 
       if (!addPetResponse.ok) {
-        throw new Error("Failed to add pet");
+        throw new Error("Failed to add image or pdf");
       }
 
       const petsData = await addPetResponse.json();
-      console.log("New pets list:", petsData.pets);
+      console.log("New data list:", petsData.images);
     } catch (error) {
       console.error("Error:", error);
     } finally {
