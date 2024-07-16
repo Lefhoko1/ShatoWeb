@@ -16,7 +16,7 @@ const LogosSection1: React.FC<LogosSection1Props> = ({ scrollToNextSection }) =>
         className="w-full h-full shadow-none border-none flex items-center justify-center"
         style={{ background: 'transparent' }}
       >
-        <CardBody className="flex flex-col items-center justify-center h-full w-full bg-white bg-opacity-30 p-8 rounded-lg">
+        <CardBody className="flex flex-col items-center justify-center h-full w-full bg-white bg-opacity-95 p-8 rounded-lg">
           <div className="text-center text-black">
             <Image
               removeWrapper
@@ -26,7 +26,7 @@ const LogosSection1: React.FC<LogosSection1Props> = ({ scrollToNextSection }) =>
             />
             <br />
             <p className="text-lg">
-              OUR BUSINESS IS UNDERSTANDING YOURS
+              
             </p>
           </div>
         </CardBody>
