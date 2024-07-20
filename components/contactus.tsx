@@ -27,7 +27,7 @@ export default function ContactUs() {
 
                 <br />
             
-                  <p className="text-gray-600">{siteConfig.contactus.adress}</p>
+                  <p className="text-gray-600">{siteConfig.contactus.address}</p>
                  
                   <p className="text-gray-600">{siteConfig.contactus.MOBILE}</p>
                  
