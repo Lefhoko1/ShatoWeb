@@ -72,7 +72,10 @@ const OurValues: React.FC = () => {
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none'
   };
 
   const iconStyle: React.CSSProperties = {
@@ -111,7 +114,7 @@ const OurValues: React.FC = () => {
                   handleClick(value);
                 }
               }}
-              aria-pressed={activeValue === value}
+              aria-selected={activeValue === value}
               role="tab"
               tabIndex={0}
             >
