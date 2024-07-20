@@ -1,13 +1,14 @@
 import React from 'react';
+import { FaCheckCircle, FaLightbulb, FaLock, FaHandshake, FaUsers, FaDollarSign } from 'react-icons/fa'; // Importing icons
 
 const OurValues: React.FC = () => {
-  const values: { [key: number]: string } = {
-    1: 'EFFICIENCY',
-    2: 'INNOVATION',
-    3: 'RELIABILITY',
-    4: 'INTEGRITY',
-    5: 'CUSTOMER-CENTRIC',
-    6: 'AFFORDABILITY'
+  const values: { [key: number]: { label: string; icon: JSX.Element } } = {
+    1: { label: 'EFFICIENCY', icon: <FaCheckCircle /> },
+    2: { label: 'INNOVATION', icon: <FaLightbulb /> },
+    3: { label: 'RELIABILITY', icon: <FaLock /> },
+    4: { label: 'INTEGRITY', icon: <FaHandshake /> },
+    5: { label: 'CUSTOMER-CENTRIC', icon: <FaUsers /> },
+    6: { label: 'AFFORDABILITY', icon: <FaDollarSign /> }
   };
 
   const explanations: { [key: string]: string } = {
@@ -21,44 +22,68 @@ const OurValues: React.FC = () => {
 
   const sectionStyle: React.CSSProperties = {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: '20px',
-    backgroundColor: '#f7f7f7',
     height: '100vh',
-    overflow: 'hidden'
+    backgroundColor: 'violet'
   };
 
   const cardStyle: React.CSSProperties = {
     backgroundColor: 'white',
-    border: '1px solid #ddd',
     borderRadius: '10px',
-    padding: '20px',
-    margin: '10px',
+    padding: '30px',
+    width: '100%',
+    maxWidth: '1200px',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-    flex: '1 1 calc(33.333% - 20px)',
+    overflowY: 'auto',
     boxSizing: 'border-box'
   };
 
   const titleStyle: React.CSSProperties = {
+    fontSize: '2em',
+    color: 'violet',
+    marginBottom: '20px',
+    textAlign: 'center'
+  };
+
+  const valueStyle: React.CSSProperties = {
+    marginBottom: '20px',
+    display: 'flex',
+    alignItems: 'center'
+  };
+
+  const iconStyle: React.CSSProperties = {
+    fontSize: '1.5em',
+    color: 'violet',
+    marginRight: '15px'
+  };
+
+  const principleTitleStyle: React.CSSProperties = {
     fontSize: '1.5em',
     color: 'violet',
     marginBottom: '10px'
   };
 
-  const descriptionStyle: React.CSSProperties = {
+  const principleDescriptionStyle: React.CSSProperties = {
     fontSize: '1em',
     color: '#555'
   };
 
   return (
     <section style={sectionStyle}>
-      {Object.values(values).map(value => (
-        <div key={value} style={cardStyle}>
-          <h3 style={titleStyle}>{value}</h3>
-          <p style={descriptionStyle}>{explanations[value]}</p>
-        </div>
-      ))}
+      <div style={cardStyle}>
+        <h1 style={titleStyle}>Our Values</h1>
+        {Object.entries(values).map(([key, { label, icon }]) => (
+          <div key={key} style={valueStyle}>
+            <div style={iconStyle}>{icon}</div>
+            <div>
+              <h3 style={principleTitleStyle}>{label}</h3>
+              <p style={principleDescriptionStyle}>{explanations[label]}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
