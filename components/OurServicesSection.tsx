@@ -65,8 +65,7 @@ const PracticeAreas: React.FC = () => {
   };
 
   return (
-    <section style={sectionStyle}>
-      <h1 style={sectionTitleStyle}>Practice Areas</h1>
+    <section style={sectionStyle}> 
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {areas.map((area, index) => (
           <div
