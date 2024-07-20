@@ -11,6 +11,8 @@ import { Divider } from "@nextui-org/react";
 import React from "react";
 import { motion } from "framer-motion";
 import ConsultationForm from "@/components/bookApp";
+import OurValues from "@/components/ourValues";
+
 
 const Home: React.FC = () => {
   const scrollToNextSection = (id: string) => {
@@ -54,6 +56,18 @@ const Home: React.FC = () => {
        
         <PracticeAreas />
       </motion.div>
+      
+      <Divider orientation="horizontal" className="bg-purple-300" />
+      <motion.div
+        id="values-section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <OurValues />
+        
+      </motion.div>
+      
 
       <Divider orientation="horizontal" className="bg-purple-300" />
       <motion.div
