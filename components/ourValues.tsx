@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { AiOutlineInfoCircle } from 'react-icons/ai'; // Example icon for menu items
-import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
+import React from 'react';
 
 const OurValues: React.FC = () => {
   const values: { [key: number]: string } = {
@@ -21,70 +19,31 @@ const OurValues: React.FC = () => {
     AFFORDABILITY: 'We offer competitive pricing without sacrificing the quality of our services.'
   };
 
-  const [activeValue, setActiveValue] = useState<string>('EFFICIENCY');
-  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false);
-
-  const handleClick = (value: string) => {
-    setActiveValue(value);
-    if (window.innerWidth < 768) {
-      setIsAccordionOpen(false); // Close accordion on mobile when an item is clicked
-    }
-  };
-
-  const handleAccordionToggle = () => {
-    setIsAccordionOpen(!isAccordionOpen);
-  };
-
   const sectionStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     padding: '20px',
     backgroundColor: '#f7f7f7',
-    height: '100vh'
+    height: '100vh',
+    overflow: 'hidden'
   };
 
-  const menuStyle: React.CSSProperties = {
-    width: isAccordionOpen ? '100%' : '300px',
-    backgroundColor: 'violet',
-    color: 'white',
-    display: 'flex',
-    flexDirection: 'column',
-    overflowY: 'auto',
-    transition: 'width 0.3s ease-in-out',
-    position: 'relative',
-    maxWidth: '300px'
-  };
-
-  const contentStyle: React.CSSProperties = {
-    flex: 1,
-    padding: '20px',
+  const cardStyle: React.CSSProperties = {
     backgroundColor: 'white',
-    overflowY: 'auto',
-    marginLeft: isAccordionOpen ? '0' : '300px',
-    transition: 'margin-left 0.3s ease-in-out',
-    maxWidth: 'calc(100% - 300px)',
-    width: 'calc(100% - 300px)',
-  };
-
-  const menuItemStyle: React.CSSProperties = {
-    padding: '15px',
-    borderBottom: '1px solid #ddd',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: 'transparent',
-    border: 'none',
-    outline: 'none'
-  };
-
-  const iconStyle: React.CSSProperties = {
-    marginRight: '10px'
+    border: '1px solid #ddd',
+    borderRadius: '10px',
+    padding: '20px',
+    margin: '10px',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    flex: '1 1 calc(33.333% - 20px)',
+    boxSizing: 'border-box'
   };
 
   const titleStyle: React.CSSProperties = {
-    fontSize: '1.2em',
-    fontWeight: 'bold'
+    fontSize: '1.5em',
+    color: 'violet',
+    marginBottom: '10px'
   };
 
   const descriptionStyle: React.CSSProperties = {
@@ -94,40 +53,12 @@ const OurValues: React.FC = () => {
 
   return (
     <section style={sectionStyle}>
-      <div style={menuStyle}>
-        <button
-          onClick={handleAccordionToggle}
-          aria-expanded={isAccordionOpen}
-          aria-controls="accordion-content"
-          style={{ padding: '15px', cursor: 'pointer', backgroundColor: 'darkviolet', color: 'white', textAlign: 'center', border: 'none', outline: 'none' }}
-        >
-          {isAccordionOpen ? <IoMdArrowDropright /> : <IoMdArrowDropdown />} Menu
-        </button>
-        <div id="accordion-content" style={{ display: isAccordionOpen ? 'block' : 'none' }}>
-          {Object.values(values).map(value => (
-            <button
-              key={value}
-              style={menuItemStyle}
-              onClick={() => handleClick(value)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  handleClick(value);
-                }
-              }}
-              aria-selected={activeValue === value}
-              role="tab"
-              tabIndex={0}
-            >
-              <AiOutlineInfoCircle style={iconStyle} />
-              <span style={titleStyle}>{value}</span>
-            </button>
-          ))}
+      {Object.values(values).map(value => (
+        <div key={value} style={cardStyle}>
+          <h3 style={titleStyle}>{value}</h3>
+          <p style={descriptionStyle}>{explanations[value]}</p>
         </div>
-      </div>
-      <div style={contentStyle}>
-        <h1 style={{ fontSize: '2.5em', color: 'violet', marginBottom: '20px' }}>{activeValue}</h1>
-        <p style={descriptionStyle}>{explanations[activeValue]}</p>
-      </div>
+      ))}
     </section>
   );
 };
