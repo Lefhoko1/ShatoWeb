@@ -1,110 +1,119 @@
 import React, { useState } from 'react';
-import { FaStar, FaLightbulb, FaCheckCircle, FaShieldAlt, FaUserFriends, FaDollarSign } from 'react-icons/fa';
+import { AiOutlineInfoCircle } from 'react-icons/ai'; // Example icon for menu items
+import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
 
 const OurValues: React.FC = () => {
   const values: { [key: number]: string } = {
-    1: "EFFICIENCY",
-    2: "INNOVATION",
-    3: "RELIABILITY",
-    4: "INTEGRITY",
-    5: "CUSTOMER-CENTRIC",
-    6: "AFFORDABILITY"
+    1: 'EFFICIENCY',
+    2: 'INNOVATION',
+    3: 'RELIABILITY',
+    4: 'INTEGRITY',
+    5: 'CUSTOMER-CENTRIC',
+    6: 'AFFORDABILITY'
   };
 
   const explanations: { [key: string]: string } = {
-    EFFICIENCY: "We strive to optimize our processes to deliver services swiftly without compromising on quality.",
-    INNOVATION: "We embrace new ideas and technologies to stay ahead in the industry and provide cutting-edge solutions.",
-    RELIABILITY: "You can count on us to be consistent, dependable, and trustworthy in all our dealings.",
-    INTEGRITY: "We uphold the highest standards of ethics and transparency in all our interactions.",
-    CUSTOMER_CENTRIC: "Our clients are at the heart of everything we do. We tailor our services to meet their specific needs.",
-    AFFORDABILITY: "We offer competitive pricing without sacrificing the quality of our services."
+    EFFICIENCY: 'We strive to optimize our processes to deliver services swiftly without compromising on quality.',
+    INNOVATION: 'We embrace new ideas and technologies to stay ahead in the industry and provide cutting-edge solutions.',
+    RELIABILITY: 'You can count on us to be consistent, dependable, and trustworthy in all our dealings.',
+    INTEGRITY: 'We uphold the highest standards of ethics and transparency in all our interactions.',
+    CUSTOMER_CENTRIC: 'Our clients are at the heart of everything we do. We tailor our services to meet their specific needs.',
+    AFFORDABILITY: 'We offer competitive pricing without sacrificing the quality of our services.'
   };
 
-  const [activeValue, setActiveValue] = useState<string>(Object.values(values)[0]);
+  const [activeValue, setActiveValue] = useState<string>('EFFICIENCY');
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false);
 
   const handleClick = (value: string) => {
     setActiveValue(value);
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, value: string) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleClick(value);
+    if (window.innerWidth < 768) {
+      setIsAccordionOpen(false); // Close accordion on mobile when an item is clicked
     }
   };
 
-  const menuItemStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '10px',
-    margin: '5px',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    backgroundColor: '#f0f0f0',
-    color: 'black',
-    transition: 'background-color 0.3s ease-in-out',
-    width: '100%',
+  const handleAccordionToggle = () => {
+    setIsAccordionOpen(!isAccordionOpen);
   };
 
-  const menuItemActiveStyle: React.CSSProperties = {
-    ...menuItemStyle,
+  const sectionStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: '20px',
+    backgroundColor: '#f7f7f7',
+    height: '100vh'
+  };
+
+  const menuStyle: React.CSSProperties = {
+    width: isAccordionOpen ? '100%' : '300px',
     backgroundColor: 'violet',
-    color: 'white'
+    color: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    overflowY: 'auto',
+    transition: 'width 0.3s ease-in-out',
+    position: 'relative',
+    maxWidth: '300px'
   };
 
   const contentStyle: React.CSSProperties = {
     flex: 1,
     padding: '20px',
-    borderRadius: '10px',
-    backgroundColor: '#fff',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+    backgroundColor: 'white',
+    overflowY: 'auto',
+    marginLeft: isAccordionOpen ? '0' : '300px',
+    transition: 'margin-left 0.3s ease-in-out',
+    maxWidth: 'calc(100% - 300px)',
+    width: 'calc(100% - 300px)',
   };
 
-  const sectionStyle: React.CSSProperties = {
+  const menuItemStyle: React.CSSProperties = {
+    padding: '15px',
+    borderBottom: '1px solid #ddd',
+    cursor: 'pointer',
     display: 'flex',
-    width: '100%',
-    height: '100vh',
-    overflow: 'hidden'
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  };
+
+  const iconStyle: React.CSSProperties = {
+    marginRight: '10px'
   };
 
   const titleStyle: React.CSSProperties = {
-    fontSize: '2.5em',
-    background: 'linear-gradient(to right, violet, black)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    marginBottom: '40px'
+    fontSize: '1.2em',
+    fontWeight: 'bold'
   };
 
-  const icons: { [key: string]: React.ReactNode } = {
-    EFFICIENCY: <FaStar />,
-    INNOVATION: <FaLightbulb />,
-    RELIABILITY: <FaCheckCircle />,
-    INTEGRITY: <FaShieldAlt />,
-    CUSTOMER_CENTRIC: <FaUserFriends />,
-    AFFORDABILITY: <FaDollarSign />
+  const descriptionStyle: React.CSSProperties = {
+    fontSize: '1em',
+    color: '#555'
   };
 
   return (
-    <section style={{ padding: '50px 20px', backgroundColor: 'white' }}>
-      <h1 style={titleStyle}>Our Values</h1>
-      <div style={sectionStyle}>
-        <div style={{ width: '25%', padding: '20px', overflowY: 'auto', borderRight: '1px solid #ccc' }}>
-          {Object.values(values).map(value => (
-            <button
-              key={value}
-              style={activeValue === value ? menuItemActiveStyle : menuItemStyle}
-              onClick={() => handleClick(value)}
-              onKeyDown={(event) => handleKeyDown(event, value)}
-              role="tab"
-              tabIndex={0}
-            >
-              {icons[value]} {value}
-            </button>
-          ))}
+    <section style={sectionStyle}>
+      <div style={menuStyle}>
+        <div
+          onClick={handleAccordionToggle}
+          style={{ padding: '15px', cursor: 'pointer', backgroundColor: 'darkviolet', color: 'white', textAlign: 'center' }}
+        >
+          {isAccordionOpen ? <IoMdArrowDropright /> : <IoMdArrowDropdown />} Menu
         </div>
-        <div style={contentStyle}>
-          <h2>{activeValue}</h2>
-          <p>{explanations[activeValue]}</p>
-        </div>
+        {Object.values(values).map(value => (
+          <div
+            key={value}
+            style={menuItemStyle}
+            onClick={() => handleClick(value)}
+            role="button"
+            tabIndex={0}
+          >
+            <AiOutlineInfoCircle style={iconStyle} />
+            <span style={titleStyle}>{value}</span>
+          </div>
+        ))}
+      </div>
+      <div style={contentStyle}>
+        <h1 style={{ fontSize: '2.5em', color: 'violet', marginBottom: '20px' }}>{activeValue}</h1>
+        <p style={descriptionStyle}>{explanations[activeValue]}</p>
       </div>
     </section>
   );
