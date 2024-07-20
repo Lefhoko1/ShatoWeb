@@ -45,7 +45,7 @@ const PracticeAreas: React.FC = () => {
 
   return (
     <div style={{ padding: '50px 20px', backgroundColor: 'white', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '40px', color: '#333' }}>Practice Areas</h2>
+      
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
         {areas.map((area, index) => (
           <div
