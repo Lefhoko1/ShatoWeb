@@ -92,24 +92,34 @@ const OurValues: React.FC = () => {
   return (
     <section style={sectionStyle}>
       <div style={menuStyle}>
-        <div
+        <button
           onClick={handleAccordionToggle}
-          style={{ padding: '15px', cursor: 'pointer', backgroundColor: 'darkviolet', color: 'white', textAlign: 'center' }}
+          aria-expanded={isAccordionOpen}
+          aria-controls="accordion-content"
+          style={{ padding: '15px', cursor: 'pointer', backgroundColor: 'darkviolet', color: 'white', textAlign: 'center', border: 'none', outline: 'none' }}
         >
           {isAccordionOpen ? <IoMdArrowDropright /> : <IoMdArrowDropdown />} Menu
+        </button>
+        <div id="accordion-content" style={{ display: isAccordionOpen ? 'block' : 'none' }}>
+          {Object.values(values).map(value => (
+            <button
+              key={value}
+              style={menuItemStyle}
+              onClick={() => handleClick(value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  handleClick(value);
+                }
+              }}
+              aria-pressed={activeValue === value}
+              role="tab"
+              tabIndex={0}
+            >
+              <AiOutlineInfoCircle style={iconStyle} />
+              <span style={titleStyle}>{value}</span>
+            </button>
+          ))}
         </div>
-        {Object.values(values).map(value => (
-          <div
-            key={value}
-            style={menuItemStyle}
-            onClick={() => handleClick(value)}
-            role="button"
-            tabIndex={0}
-          >
-            <AiOutlineInfoCircle style={iconStyle} />
-            <span style={titleStyle}>{value}</span>
-          </div>
-        ))}
       </div>
       <div style={contentStyle}>
         <h1 style={{ fontSize: '2.5em', color: 'violet', marginBottom: '20px' }}>{activeValue}</h1>
