@@ -84,6 +84,12 @@ const OurValues: React.FC = () => {
     color: '#555'
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, index: number) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      setActiveIndex(index);
+    }
+  };
+
   return (
     <section style={sectionStyle}>
       <h1 style={titleStyle}>Our Values</h1>
@@ -93,7 +99,10 @@ const OurValues: React.FC = () => {
             <div
               key={index}
               style={activeIndex === index ? activeListItemStyle : listItemStyle}
+              role="button"
+              tabIndex={0}
               onClick={() => setActiveIndex(index)}
+              onKeyDown={(event) => handleKeyDown(event, index)}
             >
               {area.title}
             </div>
