@@ -37,15 +37,24 @@ const PracticeAreas: React.FC = () => {
     transition: 'border 0.3s ease-in-out'
   });
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, index: number) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleTitleClick(index);
+    }
+  };
+
   return (
-    <div style={{ padding: '50px 20px', backgroundColor: 'white',   backgroundSize: 'cover', backgroundPosition: 'center' }}>
- 
+    <div style={{ padding: '50px 20px', backgroundColor: 'white', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '40px', color: '#333' }}>Practice Areas</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
         {areas.map((area, index) => (
           <div
             key={index}
             style={cardStyle(index)}
+            role="button"
+            tabIndex={0}
             onClick={() => handleTitleClick(index)}
+            onKeyDown={(event) => handleKeyDown(event, index)}
             onMouseEnter={(e) => (e.currentTarget.style.border = '2px solid #0070f3')}
             onMouseLeave={(e) => (e.currentTarget.style.border = activeIndex === index ? '2px solid #0070f3' : '1px solid #ccc')}
           >
