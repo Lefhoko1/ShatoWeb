@@ -26,6 +26,12 @@ const OurValues: React.FC = () => {
     setActiveValue(value);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, value: string) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleClick(value);
+    }
+  };
+
   const sectionStyle: React.CSSProperties = {
     display: 'flex',
     width: '100%',
@@ -53,6 +59,8 @@ const OurValues: React.FC = () => {
     left: 0,
     height: '100%',
     overflowY: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
   };
 
   const menuItemStyle: React.CSSProperties = {
@@ -62,6 +70,7 @@ const OurValues: React.FC = () => {
     cursor: 'pointer',
     borderRadius: '5px',
     transition: 'background 0.3s',
+    marginBottom: '10px',
   };
 
   const menuItemIconStyle: React.CSSProperties = {
@@ -100,10 +109,14 @@ const OurValues: React.FC = () => {
     <section style={sectionStyle}>
       <div style={menuStyle}>
         {Object.entries(values).map(([key, value]) => (
-          <div
+          <button
             key={key}
             style={menuItemStyle}
             onClick={() => handleClick(value)}
+            onKeyDown={(event) => handleKeyDown(event, value)}
+            aria-pressed={activeValue === value}
+            role="tab"
+            tabIndex={0}
           >
             <div style={menuItemIconStyle}>
               {key === '1' && <FaCog />}
@@ -114,7 +127,7 @@ const OurValues: React.FC = () => {
               {key === '6' && <FaDollarSign />}
             </div>
             <span style={menuItemTextStyle}>{value}</span>
-          </div>
+          </button>
         ))}
       </div>
       <div style={descriptionStyle}>
