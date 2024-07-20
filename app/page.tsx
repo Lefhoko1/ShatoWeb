@@ -56,8 +56,7 @@ const Home: React.FC = () => {
        
         <PracticeAreas />
       </motion.div>
-      
-      <Divider orientation="horizontal" className="bg-purple-300" />
+       
       <motion.div
         id="values-section"
         initial={{ opacity: 0, y: 50 }}
@@ -68,8 +67,7 @@ const Home: React.FC = () => {
         
       </motion.div>
       
-
-      <Divider orientation="horizontal" className="bg-purple-300" />
+ 
       <motion.div
         id="contact-section"
         initial={{ opacity: 0, y: 50 }}
