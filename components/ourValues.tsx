@@ -102,7 +102,7 @@ const OurValues: React.FC = () => {
             style={activeValue === value ? activeMenuItemStyle : menuItemStyle}
             onClick={() => handleClick(value)}
             onKeyDown={(event) => handleKeyDown(event as KeyboardEvent<HTMLButtonElement>, value)}
-            aria-pressed={activeValue === value}
+            aria-selected={activeValue === value}
             role="tab"
             tabIndex={0}
           >
