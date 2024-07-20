@@ -35,12 +35,12 @@ const PracticeAreas: React.FC = () => {
   };
 
   const activeCardStyle: CSSProperties = {
-    border: '2px solid #6a0dad'
+    border: '2px solid #8A2BE2' // Violet color
   };
 
   const titleStyle: CSSProperties = {
     fontSize: '1.5em',
-    color: '#6a0dad',
+    color: '#8A2BE2', // Violet color
     marginBottom: '10px'
   };
 
@@ -58,7 +58,7 @@ const PracticeAreas: React.FC = () => {
 
   const sectionTitleStyle: CSSProperties = {
     fontSize: '2.5em',
-    background: 'linear-gradient(to right, purple, black)',
+    background: 'linear-gradient(to right, violet, black)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     marginBottom: '40px'
