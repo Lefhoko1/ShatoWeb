@@ -21,52 +21,75 @@ const PracticeAreas: React.FC = () => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
-  const cardStyle = (index: number): CSSProperties => ({
+  const cardStyle: CSSProperties = {
     backgroundColor: 'white',
-    border: activeIndex === index ? '2px solid #0070f3' : '1px solid #ccc',
+    border: '1px solid #ccc',
     borderRadius: '10px',
     padding: '20px',
-    width: '400px',
-    height: '300px',
+    width: '300px',
+    margin: '10px',
     textAlign: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    cursor: 'pointer',
-    transition: 'border 0.3s ease-in-out'
-  });
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    transition: 'border 0.3s ease-in-out',
+    cursor: 'pointer'
+  };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, index: number) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleTitleClick(index);
-    }
+  const activeCardStyle: CSSProperties = {
+    border: '2px solid #6a0dad'
+  };
+
+  const titleStyle: CSSProperties = {
+    fontSize: '1.5em',
+    color: '#6a0dad',
+    marginBottom: '10px'
+  };
+
+  const descriptionStyle: CSSProperties = {
+    fontSize: '1em',
+    color: '#555'
+  };
+
+  const sectionStyle: CSSProperties = {
+    width: '100%',
+    padding: '50px 20px',
+    textAlign: 'center',
+    backgroundColor: '#f7f7f7'
+  };
+
+  const sectionTitleStyle: CSSProperties = {
+    fontSize: '2.5em',
+    background: 'linear-gradient(to right, purple, black)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    marginBottom: '40px'
   };
 
   return (
-    <div style={{ padding: '50px 20px', backgroundColor: 'white', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-      
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
+    <section style={sectionStyle}>
+      <h1 style={sectionTitleStyle}>Practice Areas</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {areas.map((area, index) => (
           <div
             key={index}
-            style={cardStyle(index)}
+            style={activeIndex === index ? { ...cardStyle, ...activeCardStyle } : cardStyle}
             role="button"
             tabIndex={0}
             onClick={() => handleTitleClick(index)}
-            onKeyDown={(event) => handleKeyDown(event, index)}
-            onMouseEnter={(e) => (e.currentTarget.style.border = '2px solid #0070f3')}
-            onMouseLeave={(e) => (e.currentTarget.style.border = activeIndex === index ? '2px solid #0070f3' : '1px solid #ccc')}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                handleTitleClick(index);
+              }
+            }}
           >
             {activeIndex === index ? (
-              <p style={{ color: '#555' }}>{area.description}</p>
+              <p style={descriptionStyle}>{area.description}</p>
             ) : (
-              <h3 style={{ fontSize: '1.5em', color: '#0070f3' }}>{area.title}</h3>
+              <h3 style={titleStyle}>{area.title}</h3>
             )}
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
