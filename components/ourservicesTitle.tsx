@@ -17,9 +17,7 @@ export default function ServiceItems() {
                             <h1 className={title()}>Our&nbsp;</h1>
               <h1 className={title({ color: "violet" })}>Services&nbsp;</h1>
               <br />
-                                <p>
-                                    {siteConfig.services1}
-                                </p>
+                                
                             </div>
                         </CardBody>
                     </Card>

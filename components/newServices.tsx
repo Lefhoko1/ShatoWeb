@@ -38,7 +38,7 @@ const PracticeAreas: React.FC = () => {
   });
 
   return (
-    <div style={{ padding: '50px 20px', backgroundColor: 'white',   backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div style={{ padding: '50px 20px', backgroundColor: 'white', backgroundImage: 'url(/images/4.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
  
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
         {areas.map((area, index) => (

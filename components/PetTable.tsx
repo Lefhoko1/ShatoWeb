@@ -1,9 +1,9 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { Card, CardFooter, Image, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@nextui-org/react";
 
 interface Pet {
-  id: number;
   url: string;
   dowloadurl: string;
   extension: string;
@@ -34,9 +34,31 @@ export default function PetTable() {
   }, []);
 
   const handleCardClick = (pet: Pet) => {
-    console.log("Card clicked:", pet); // Debugging log
     setSelectedPet(pet);
     onOpen();
+  };
+
+  const handleDelete = async () => {
+    if (!selectedPet) return;
+
+    try {
+      const response = await fetch(`/api/delete-pet`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: selectedPet.url }),
+      });
+
+      if (response.ok) {
+        setPets(pets.filter(pet => pet.url !== selectedPet.url));
+        onOpenChange();
+      } else {
+        console.error("Failed to delete pet");
+      }
+    } catch (error) {
+      console.error("Failed to delete pet", error);
+    }
   };
 
   if (loading) {
@@ -44,11 +66,11 @@ export default function PetTable() {
   }
 
   return (
-    <div className="min-h-screen flex justify-center items-center  ">
+    <div className="min-h-screen flex justify-center items-center">
       <div className="max-w-screen-2xl px-8 grid gap-4 grid-cols-12">
         {pets.map((pet) => (
           <Card 
-            key={pet.id} 
+            key={pet.url} 
             isFooterBlurred 
             className="col-span-12 sm:col-span-4 shadow-sm border-t-1" 
             isPressable 
@@ -138,6 +160,9 @@ export default function PetTable() {
                 >
                   Download
                 </a>
+                <Button color="danger" variant="light" onPress={handleDelete}>
+                  Delete
+                </Button>
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
