@@ -25,8 +25,7 @@ const OurValues: React.FC = () => {
     alignItems: 'center',
     justifyContent: 'center',
     padding: '20px',
-    height: '100vh',
-    backgroundColor: 'violet'
+    height: '100vh' 
   };
 
   const cardStyle: React.CSSProperties = {
